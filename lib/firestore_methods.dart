@@ -7,4 +7,9 @@ class FirestoreMethods {
     final posts = _firestore.collection('posts').snapshots();
     return posts;
   }
+
+  getPost(String id) {
+    final post = _firestore.collection('posts').doc(id).get();
+    return post;
+  }
 }

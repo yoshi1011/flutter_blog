@@ -12,11 +12,16 @@ class BlogCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final data = snapshot.data();
+    final id = snapshot.reference.id;
+
     return InkWell(
       onTap: () => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const BlogScreen(),
+          builder: (context) => BlogScreen(
+            postId: id,
+          ),
         ),
       ),
       child: Column(
@@ -28,7 +33,7 @@ class BlogCard extends StatelessWidget {
               horizontal: 16,
             ),
             child: Text(
-              snapshot['title'],
+              data['title'],
               style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.black54,
@@ -40,18 +45,18 @@ class BlogCard extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.4,
               width: double.infinity,
               child: Image.network(
-                snapshot['imageUrl'],
+                data['imageUrl'],
                 fit: BoxFit.cover,
               ),
             ),
           ),
           Container(
             padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
-            child: Text(snapshot['description']),
+            child: Text(data['description']),
           ),
           Container(
             alignment: Alignment.bottomRight,
-            child: Text(snapshot['publishedAt'].toDate().toString()),
+            child: Text(data['publishedAt'].toDate().toString()),
           )
         ],
       ),

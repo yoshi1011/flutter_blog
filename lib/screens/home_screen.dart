@@ -29,7 +29,7 @@ Widget _buildFeedList(snapshot) {
       itemCount: snapshot.data!.docs.length,
       itemBuilder: (BuildContext context, int index) {
         return BlogCard(
-          snapshot: snapshot.data!.docs[index].data(),
+          snapshot: snapshot.data!.docs[index],
         );
       },
     );
