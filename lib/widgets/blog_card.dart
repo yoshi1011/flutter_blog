@@ -3,17 +3,11 @@ import 'package:flutter_blog/screens/blog_screen.dart';
 import 'package:flutter_blog/screens/search_screen.dart';
 
 class BlogCard extends StatelessWidget {
-  final String title;
-  final String imageUrl;
-  final String description;
-  final DateTime publishedAt;
+  final snapshot;
 
   const BlogCard({
     Key? key,
-    required this.title,
-    required this.imageUrl,
-    required this.description,
-    required this.publishedAt,
+    required this.snapshot,
   }) : super(key: key);
 
   @override
@@ -34,7 +28,7 @@ class BlogCard extends StatelessWidget {
               horizontal: 16,
             ),
             child: Text(
-              title,
+              snapshot['title'],
               style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.black54,
@@ -46,18 +40,18 @@ class BlogCard extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.4,
               width: double.infinity,
               child: Image.network(
-                imageUrl,
+                snapshot['imageUrl'],
                 fit: BoxFit.cover,
               ),
             ),
           ),
           Container(
             padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
-            child: Text(description),
+            child: Text(snapshot['description']),
           ),
           Container(
             alignment: Alignment.bottomRight,
-            child: Text(publishedAt.toString()),
+            child: Text(snapshot['publishedAt'].toDate().toString()),
           )
         ],
       ),
