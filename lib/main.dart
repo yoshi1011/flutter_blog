@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/screens/home_screen.dart';
-import 'package:flutter_blog/screens/list_screen.dart';
+import 'package:flutter_blog/screens/search_screen.dart';
 import 'package:flutter_blog/screens/profile_screen.dart';
 
 void main() {
@@ -19,7 +19,7 @@ class _MyBlogState extends State<MyBlog> {
 
   static const List<Widget> _screens = <Widget>[
     HomeScreen(),
-    ListScreen(),
+    SearchScreen(),
     ProfileScreen(),
   ];
 
@@ -38,7 +38,9 @@ class _MyBlogState extends State<MyBlog> {
         appBar: AppBar(
           title: const Text('Flutter Blog'),
         ),
-        body: Container(child: _screens.elementAt(_index)),
+        body: Container(
+          child: _screens.elementAt(_index),
+        ),
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
@@ -46,8 +48,8 @@ class _MyBlogState extends State<MyBlog> {
               label: 'HOME',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.list),
-              label: 'LIST',
+              icon: Icon(Icons.search),
+              label: 'SEARCH',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
